@@ -26,9 +26,9 @@ const Auth = () => {
     e.preventDefault();
 
     // The URL changes based on whether we are logging in or registering
-    const url = isLogin 
-      ? 'http://localhost:5000/api/auth/login' 
-      : 'http://localhost:5000/api/auth/register';
+const url = isLogin
+  ? `${process.env.REACT_APP_API_URL}/api/auth/login`
+  : `${process.env.REACT_APP_API_URL}/api/auth/register`;
 
     try {
       const response = await fetch(url, {

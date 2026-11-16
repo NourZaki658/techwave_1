@@ -13,29 +13,35 @@ const Classes = () => {
 
   const userInfo = JSON.parse(localStorage.getItem('user'));
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const classRes = await fetch('http://localhost:5000/api/classes');
-        const classData = await classRes.json();
-        setClassesData(classData);
+useEffect(() => {
+  const fetchData = async () => {
+    try {
+      const classRes = await fetch(
+        `${process.env.REACT_APP_API_URL}/api/classes`
+      );
+      const classData = await classRes.json();
+      setClassesData(classData);
 
-        if (userInfo) {
-          const bookRes = await fetch('http://localhost:5000/api/bookings', {
-            headers: { Authorization: `Bearer ${userInfo.token}` },
-          });
-          const bookData = await bookRes.json();
-          setBookedClasses(bookData);
-        }
-      } catch (error) {
-        console.error('Error fetching data:', error);
-      } finally {
-        setIsLoading(false);
+      if (userInfo) {
+        const bookRes = await fetch(
+          `${process.env.REACT_APP_API_URL}/api/bookings`,
+          {
+            headers: {
+              Authorization: `Bearer ${userInfo.token}`,
+            },
+          }
+        );
+
+        const bookData = await bookRes.json();
+        setBookedClasses(bookData);
       }
-    };
+    } catch (error) {
+      console.error('Error fetching data:', error);
+    }
+  };
 
-    fetchData();
-  }, []);
+  fetchData();
+}, [userInfo]);
 
   const handleBooking = async (cls) => {
     if (!userInfo) {

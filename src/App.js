@@ -1,24 +1,24 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+
+import { Routes, Route } from "react-router-dom";
 import Home from "./home/Home";
 import Navbar from "./home/Navbar";
 import Dashboard from "./dashboard/Dashboard";
-import Classes from "./classes/Classes"; // Add this line
-import Auth from "./auth/Auth"; // Add this at the top
+import Classes from "./classes/Classes";
+import Auth from "./auth/Auth";
 
-
-// Inside <Routes>:
 function App() {
   return (
-    <Router>
+    <>
       <Navbar />
+
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/dashboard" element={<Dashboard />} />
-                <Route path="/classes" element={<Classes />} /> {/* Add this line */}
-<Route path="/login" element={<Auth />} />
-<Route path="/register" element={<Auth />} />
+        <Route path="/classes" element={<Classes />} />
+        <Route path="/login" element={<Auth />} />
+        <Route path="/register" element={<Auth />} />
       </Routes>
-    </Router>
+    </>
   );
 }
 

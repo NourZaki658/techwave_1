@@ -4,6 +4,7 @@
 # Backend dependencies
 /backend/node_modules
 
+.env
 # Secret Environment Variables
 /backend/.env
 

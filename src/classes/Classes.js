@@ -6,7 +6,7 @@ const Classes = () => {
   const navigate = useNavigate();
   const [classesData, setClassesData] = useState([]);
   const [bookedClasses, setBookedClasses] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
+const [isLoading] = useState(true);
   
   // NEW: State to keep track of which day is selected
   const [selectedDay, setSelectedDay] = useState('MON'); 

@@ -16,11 +16,14 @@ const Dashboard = () => {
 
     const fetchUserData = async () => {
       try {
-        const response = await fetch(`${process.env.REACT_APP_API_URL}/api/auth/me`, {
-          headers: {
-            Authorization: `Bearer ${userInfo.token}`,
-          },
-        });
+        const response = await fetch(
+  `${process.env.REACT_APP_API_URL}/api/auth/me`,
+  {
+    headers: {
+      Authorization: `Bearer ${userInfo.token}`,
+    },
+  }
+);
         
         if (response.ok) {
           const data = await response.json();
